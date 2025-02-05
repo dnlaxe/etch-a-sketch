@@ -1,9 +1,15 @@
 const grid = document.querySelector('.grid')
+const button = document.querySelector('button');
 
-for (i = 0; i < 16; i++) {
+button.addEventListener("click", () => {
+    const size = prompt('Grid length (1-100): ');
+
+    grid.innerHTML = "";
+    
+    for (i = 0; i < size; i++) {
     const row = document.createElement('div');
     row.className = 'row';
-    for (j = 0; j < 16; j++) {
+    for (j = 0; j < size; j++) {
         const column = document.createElement('div');
         column.className = 'column';
 
@@ -14,6 +20,6 @@ for (i = 0; i < 16; i++) {
         row.appendChild(column);
     }
     grid.appendChild(row);
-};
+    };
 
-    
+});
