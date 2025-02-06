@@ -1,8 +1,11 @@
 const grid = document.querySelector('.grid')
 const button = document.querySelector('button');
+const all = document.querySelector('*');
 const header = document.querySelector('.header');
 
 header.style.backgroundColor = randomColor();
+button.style.color = header.style.backgroundColor;
+all.style.color = header.style.backgroundColor;
 
 button.addEventListener("click", () => {
     const size = prompt('Grid length (1-100): ');
@@ -12,7 +15,10 @@ button.addEventListener("click", () => {
     }
 
     grid.innerHTML = "";
+    
     header.style.backgroundColor = randomColor();
+    button.style.color = header.style.backgroundColor;
+    all.style.color = header.style.backgroundColor;
     
     for (i = 0; i < size; i++) {
     const row = document.createElement('div');
