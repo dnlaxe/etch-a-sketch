@@ -1,20 +1,38 @@
 const grid = document.querySelector('.grid')
 const button = document.querySelector('button');
+const header = document.querySelector('.header');
+
+header.style.backgroundColor = randomColor();
 
 button.addEventListener("click", () => {
     const size = prompt('Grid length (1-100): ');
+    if (size > 100) {
+        alert("Please choose a value under 100."); 
+        return;
+    }
 
     grid.innerHTML = "";
+    header.style.backgroundColor = randomColor();
     
     for (i = 0; i < size; i++) {
     const row = document.createElement('div');
     row.className = 'row';
     for (j = 0; j < size; j++) {
         const column = document.createElement('div');
+        let opacity = 0;
         column.className = 'column';
+        column.style.opacity = opacity;
 
         column.addEventListener("mouseenter", () => {
-        column.style.backgroundColor = 'black';
+            if (opacity < 1) {
+                opacity += 0.1;
+                column.style.opacity = opacity;
+            }
+
+        const getComputedStyle = window.getComputedStyle(column);
+        console.log(getComputedStyle.getPropertyValue('opacity'));
+        
+        column.style.backgroundColor = randomColor();
         });
 
         row.appendChild(column);
@@ -23,3 +41,10 @@ button.addEventListener("click", () => {
     };
 
 });
+
+function randomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`
+}
