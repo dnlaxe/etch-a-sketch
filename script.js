@@ -38,7 +38,7 @@ button.addEventListener("click", () => {
         const getComputedStyle = window.getComputedStyle(column);
         console.log(getComputedStyle.getPropertyValue('opacity'));
         
-        column.style.backgroundColor = randomColor();
+        column.style.backgroundColor = header.style.backgroundColor;
         });
 
         row.appendChild(column);
